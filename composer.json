@@ -1,0 +1,14 @@
+{
+    "name": "basecondition/scsslibrary",
+    "type": "library",
+    "description": "Basecondition scssLibrary",
+    "keywords": [],
+    "homepage": "http://basecondition.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joachim Doerr",
+            "email": "hello@basecondition.com"
+        }
+    ]
+}
