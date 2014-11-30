@@ -1,0 +1,92 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+@mixin linear-gradient($pos, $G1, $G2: null,
+$G3: null, $G4: null,
+$G5: null, $G6: null,
+$G7: null, $G8: null,
+$G9: null, $G10: null,
+$fallback: null) {
+    // Detect what type of value exists in $pos
+    $pos-type: type-of(nth($pos, 1));
+    $pos-spec: null;
+    $pos-degree: null;
+
+    // If $pos is missing from mixin, reassign vars and add default position
+    @if ($pos-type == color) or (nth($pos, 1) == "transparent") {
+        $G10: $G9;
+        $G9: $G8;
+        $G8: $G7;
+        $G7: $G6;
+        $G6: $G5;
+        $G5: $G4;
+        $G4: $G3;
+        $G3: $G2;
+        $G2: $G1;
+        $G1: $pos;
+        $pos: null;
+    }
+
+    @if $pos {
+        $positions: _linear-positions-parser($pos);
+        $pos-degree: nth($positions, 1);
+        $pos-spec: nth($positions, 2);
+    }
+
+    $full: $G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10;
+
+    // Set $G1 as the default fallback color
+    $fallback-color: nth($G1, 1);
+
+    // If $fallback is a color use that color as the fallback color
+    @if (type-of($fallback) == color) or ($fallback == "transparent") {
+        $fallback-color: $fallback;
+    }
+
+    background-color: $fallback-color;
+    background-image: -webkit-linear-gradient($pos-degree $full); // Safari 5.1+, Chrome
+    background-image: unquote("linear-gradient(#{$pos-spec}#{$full})");
+}
+
+// Requires Sass 3.1+
+@mixin radial-gradient($G1,        $G2,
+$G3: null, $G4: null,
+$G5: null, $G6: null,
+$G7: null, $G8: null,
+$G9: null, $G10: null,
+$pos: null,
+$shape-size: null,
+$fallback: null) {
+
+    $data: _radial-arg-parser($G1, $G2, $pos, $shape-size);
+    $G1:  nth($data, 1);
+    $G2:  nth($data, 2);
+    $pos: nth($data, 3);
+    $shape-size: nth($data, 4);
+
+    $full: $G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10;
+
+    // Strip deprecated cover/contain for spec
+    $shape-size-spec: _shape-size-stripper($shape-size);
+
+    // Set $G1 as the default fallback color
+    $first-color: nth($full, 1);
+    $fallback-color: nth($first-color, 1);
+
+    @if (type-of($fallback) == color) or ($fallback == "transparent") {
+        $fallback-color: $fallback;
+    }
+
+    // Add Commas and spaces
+    $shape-size: if($shape-size, '#{$shape-size}, ', null);
+    $pos:        if($pos, '#{$pos}, ', null);
+    $pos-spec:   if($pos, 'at #{$pos}', null);
+    $shape-size-spec: if(($shape-size-spec != ' ') and ($pos == null), '#{$shape-size-spec}, ', '#{$shape-size-spec} ');
+
+    background-color:  $fallback-color;
+    background-image: -webkit-radial-gradient(unquote(#{$pos}#{$shape-size}#{$full}));
+    background-image: unquote("radial-gradient(#{$shape-size-spec}#{$pos-spec}#{$full})");
+}

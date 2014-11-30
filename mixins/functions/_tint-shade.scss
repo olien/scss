@@ -1,0 +1,15 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+// Add percentage of white to a color
+@function tint($color, $percent) {
+    @return mix(white, $color, $percent);
+}
+
+// Add percentage of black to a color
+@function shade($color, $percent) {
+    @return mix(black, $color, $percent);
+}

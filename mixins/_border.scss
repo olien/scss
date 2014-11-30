@@ -1,0 +1,111 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// @method: border-radius
+// @usage: @include border-radius(10px);
+// @usage: @include border-radius(10px, 10px, border-top-right-radius);
+// @syntax: radius-width,radius-vertical-width,property
+
+@mixin border-radius($default-radius, $vertical-radius: false, $property: border-radius) {
+    @if $vertical-radius {
+        @include prefixer($property, $default-radius, webkit moz spec);
+        @include prefixer($property, $default-radius unquote("/") $vertical-radius, moz khtml);
+    } @else {
+        @include prefixer($property, $default-radius, webkit moz spec);
+    }
+}
+
+// @method: border-top-radius
+// @usage: @include border-top-radius(10px);
+// @syntax: radius-width,radius-vertical-width
+
+@mixin border-top-radius($default-radius, $vertical-radius: false) {
+    @include border-radius($default-radius, $vertical-radius, border-top-left-radius);
+    @include border-radius($default-radius, $vertical-radius, border-top-right-radius);
+}
+
+// @method: border-right-radius
+// @usage: @include border-right-radius(10px);
+// @syntax: radius-width,radius-vertical-width
+
+@mixin border-right-radius($default-radius, $vertical-radius: false) {
+    @include border-radius($default-radius, $vertical-radius, border-top-right-radius);
+    @include border-radius($default-radius, $vertical-radius, border-bottom-right-radius);
+}
+
+// @method: border-bottom-radius
+// @usage: @include border-bottom-radius(10px);
+// @syntax: radius-width,radius-vertical-width
+
+@mixin border-bottom-radius($default-radius, $vertical-radius: false) {
+    @include border-radius($default-radius, $vertical-radius, border-bottom-left-radius);
+    @include border-radius($default-radius, $vertical-radius, border-bottom-right-radius);
+}
+
+// @method: border-left-radius
+// @usage: @include border-left-radius(10px);
+// @syntax: radius-width,radius-vertical-width
+
+@mixin border-left-radius($default-radius, $vertical-radius: false) {
+    @include border-radius($default-radius, $vertical-radius, border-top-left-radius);
+    @include border-radius($default-radius, $vertical-radius, border-bottom-left-radius);
+}
+
+// @method: border-top-left-radius
+// @usage: @include border-top-left-radius(10px);
+// @syntax: radius-width,radius-vertical-width
+
+@mixin border-top-left-radius($default-radius, $vertical-radius: false) {
+    @include border-radius($default-radius, $vertical-radius, border-top-left-radius);
+}
+
+// @method: border-top-right-radius
+// @usage: @include border-top-right-radius(10px);
+// @syntax: radius-width,radius-vertical-width
+
+@mixin border-top-right-radius($default-radius, $vertical-radius: false) {
+    @include border-radius($default-radius, $vertical-radius, border-top-right-radius);
+}
+
+// @method: border-bottom-left-radius
+// @usage: @include border-bottom-left-radius(10px);
+// @syntax: radius-width,radius-vertical-width
+
+@mixin border-bottom-left-radius($default-radius, $vertical-radius: false) {
+    @include border-radius($default-radius, $vertical-radius, border-bottom-left-radius);
+}
+
+// @method: border-bottom-right-radius
+// @usage: @include border-bottom-right-radius(10px);
+// @syntax: radius-width,radius-vertical-width
+
+@mixin border-bottom-right-radius($default-radius, $vertical-radius: false) {
+    @include border-radius($default-radius, $vertical-radius, border-bottom-right-radius);
+}
+
+// @method: border-image
+// @usage: @include border-image(image:url(border.png) 30 30 round);
+// @syntax: source slice width outset repeat|initial|inherit
+
+// @mixin border-image ($image)
+// {
+//     @include prefixer(border-image, $image, webkit moz o spec);
+// }
+
+// @method: border-image
+// @usage: @include border-image(image:url(border.png) 30 30 round);
+// @usage: @include border-image(url("image.png"));
+// @usage: @include border-image(url("image.png") 20 stretch);
+// @usage: @include border-image(linear-gradient(45deg, orange, yellow));
+// @usage: @include border-image(linear-gradient(45deg, orange, yellow) stretch);
+// @usage: @include border-image(linear-gradient(45deg, orange, yellow) 20 30 40 50 stretch round);
+// @usage: @include border-image(radial-gradient(top, cover, orange, yellow, orange));
+
+@mixin border-image($images) {
+    -webkit-border-image: _border-add-prefix($images, webkit);
+    -moz-border-image: _border-add-prefix($images, moz);
+    -o-border-image: _border-add-prefix($images, o);
+    border-image: _border-add-prefix($images);
+    border-style: solid;
+}

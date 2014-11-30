@@ -1,0 +1,14 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+@mixin perspective($depth: none) {
+  // none | <length>
+  @include prefixer(perspective, $depth, webkit moz spec);
+}
+
+@mixin perspective-origin($value: 50% 50%) {
+  @include prefixer(perspective-origin, $value, webkit moz spec);
+}

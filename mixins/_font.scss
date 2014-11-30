@@ -1,0 +1,79 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+// @method: font-face
+// @usage: @include
+// Order of the includes matters, and it is: normal, bold, italic, bold+italic.
+
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false ) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+
+    @if $asset-pipeline == true {
+      src: font-url('#{$file-path}.eot');
+      src: font-url('#{$file-path}.eot?#iefix')          format('embedded-opentype'),
+           font-url('#{$file-path}.woff')                format('woff'),
+           font-url('#{$file-path}.ttf')                 format('truetype'),
+           font-url('#{$file-path}.svg##{$font-family}') format('svg');
+    } @else {
+      src: url('#{$file-path}.eot');
+      src: url('#{$file-path}.eot?#iefix')               format('embedded-opentype'),
+           url('#{$file-path}.woff')                     format('woff'),
+           url('#{$file-path}.ttf')                      format('truetype'),
+           url('#{$file-path}.svg##{$font-family}')      format('svg');
+    }
+  }
+}
+
+// Font feature settings mixin and property default.
+// @method: font-feature-settings
+// @usage: @include font-feature-settings("liga");
+//         @include font-feature-settings("lnum" false);
+//         @include font-feature-settings("pnum" 1, "kern" 0);
+//         @include font-feature-settings("ss01", "ss02");
+
+@mixin font-feature-settings($settings...) {
+    @if length($settings) == 0 { $settings: none; }
+    @include prefixer(font-feature-settings, $settings, webkit moz ms spec);
+}
+
+// @method: font-size
+// @usage: @import font-size(12px);
+// @syntax: em|px|%
+
+@mixin font-size($size)
+{
+    @if (unit($size) == px) {
+        font-size: $size;
+        font-size: rem($size);
+    } @else if (unit($size) == em or unit($size) == rem) {
+        font-size: px($size);
+        font-size: strip-units($size) * 1rem;
+    } @else {
+        font-size: $size;
+    }
+}
+
+// @method: line-height
+// @usage: @import line-height(12px);
+// @syntax: em|px|%
+
+@mixin line-height($size)
+{
+    @if (unit($size) == px) {
+        line-height: $size;
+        line-height: rem($size);
+    } @else if (unit($size) == em or unit($size) == rem) {
+        line-height: px($size);
+        line-height: strip-units($size) * 1rem;
+    } @else {
+        line-height: $size;
+    }
+}
+
+

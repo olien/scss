@@ -1,0 +1,13 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+// @method: backface-visibility
+// @usage: @include backface-visibility(button);
+// @syntax: visible|hidden|initial|inherit
+
+@mixin backface-visibility($visibility) {
+    @include prefixer(backface-visibility, $visibility, webkit spec);
+}

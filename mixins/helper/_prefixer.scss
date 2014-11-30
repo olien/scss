@@ -1,0 +1,51 @@
+// basecondition ~ scss-framework ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// @method: prefixer
+// @usage: @include prefixer(border-radius, 10px, webkit moz ms o spec);
+// @syntax: property, value, prefixes
+
+@mixin prefixer($property, $value, $prefixes: spec) {
+    @each $prefix in $prefixes {
+        @if $prefix == webkit {
+            -webkit-#{$property}: $value;
+        } @else if $prefix == moz {
+            -moz-#{$property}: $value;
+        } @else if $prefix == ms {
+            -ms-#{$property}: $value;
+        } @else if $prefix == khtml {
+            -khtml-#{$property}: $value;
+        } @else if $prefix == o {
+            -o-#{$property}: $value;
+        } @else if $prefix == spec {
+            #{$property}: $value;
+        } @else {
+            @warn "Unrecognized prefix: #{$prefix}";
+        }
+    }
+}
+
+// @method: value-prefixer
+// @usage: @include value-prefixer(display, box, webkit moz ms spec);
+// @syntax: property, value, prefixes
+
+@mixin value-prefixer($property, $value, $prefixes: spec) {
+    @each $prefix in $prefixes {
+        @if $prefix == webkit {
+            #{$property}: -webkit-#{$value};
+        } @else if $prefix == moz {
+            #{$property}: -moz-#{$value};
+        } @else if $prefix == ms {
+            #{$property}: -ms-#{$value};
+        } @else if $prefix == khtml {
+            #{$property}: -khtml-#{$value};
+        } @else if $prefix == o {
+            #{$property}: -o-#{$value};
+        } @else if $prefix == spec {
+            #{$property}: $value;
+        } @else {
+            @warn "Unrecognized prefix: #{$prefix}";
+        }
+    }
+}

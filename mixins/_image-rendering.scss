@@ -1,0 +1,17 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+@mixin image-rendering($mode: auto) {
+    @if ($mode == crisp-edges) {
+        -ms-interpolation-mode: nearest-neighbor; // IE8+
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    } @else {
+        image-rendering: $mode;
+    }
+}

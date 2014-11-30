@@ -1,0 +1,77 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+//************************************************************************//
+// Background property for adding multiple backgrounds using shorthand
+// notation.
+//************************************************************************//
+
+// @method: background
+// @usage: @include background(linear-gradient(top, orange, red));
+//         @include background(radial-gradient(circle at 40% 40%, orange, red));
+//         @include background(url("/images/a.png") no-repeat, linear-gradient(orange, red));
+//         @include background(url("image.png") center center, linear-gradient(orange, red), url("image.png"));
+
+@mixin background($background-1, $background-2: null,
+  $background-3: null, $background-4: null,
+  $background-5: null, $background-6: null,
+  $background-7: null, $background-8: null,
+  $background-9: null, $background-10: null,
+  $fallback: null) {
+    $backgrounds: $background-1, $background-2,
+    $background-3, $background-4,
+    $background-5, $background-6,
+    $background-7, $background-8,
+    $background-9, $background-10;
+
+    @if (type_of($background-1) == color and type_of($background-2) == number) {
+        @include translucent-background-color($background-1, $background-2);
+    } @else {
+        $fallback-color: false;
+        @if (type-of($fallback) == color) or ($fallback == "transparent") {
+            $fallback-color: $fallback;
+        } @else {
+            $fallback-color: _extract-background-color($backgrounds);
+        }
+
+        @if $fallback-color {
+            background-color: $fallback-color;
+        }
+
+        background: _background-add-prefix($backgrounds, webkit);
+        background: _background-add-prefix($backgrounds);
+    }
+}
+
+// @method: background-image
+// @usage: @include background-image(linear-gradient(top, orange, red));
+//         @include background-image(radial-gradient(50% 50%, cover circle, orange, red));
+//         @include background-image(url("/images/a.png"), linear-gradient(orange, red));
+//         @include background-image(url("image.png"), linear-gradient(orange, red), url("image.png"));
+//         @include background-image(linear-gradient(hsla(0, 100%, 100%, 0.25) 0%, hsla(0, 100%, 100%, 0.08) 50%, transparent 50%), linear-gradient(orange, red));
+
+@mixin background-image($images...) {
+    background-image: _background-img-add-prefix($images, webkit);
+    background-image: _background-img-add-prefix($images);
+}
+
+//  @method: background-clip
+
+@mixin background-clip($clip) {
+    // webkit and mozilla use the deprecated short [border | padding]
+    $clip: unquote($clip);
+    $deprecated: $clip;
+    @if $clip == padding-box { $deprecated: padding; }
+    @if $clip == border-box { $deprecated: border; }
+    // Support for webkit and mozilla's use of the deprecated short form
+    @include prefixer(background-clip, $deprecated, webkit moz);
+    @include prefixer(background-clip, $deprecated, khtml spec);
+}
+
+
+//  @method: background-origin
+//  @method: background-size
+//  @method: background-attachment

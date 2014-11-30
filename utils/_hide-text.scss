@@ -1,0 +1,17 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// @method: hide-text
+// @usage: @include hide-text();
+
+@mixin hide-text {
+    overflow: hidden;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 100%;
+    }
+}

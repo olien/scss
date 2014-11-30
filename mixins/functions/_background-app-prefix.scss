@@ -1,0 +1,101 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+@function _background-add-prefix($backgrounds, $vendor: false) {
+    $backgrounds-prefixed: ();
+
+    @for $i from 1 through length($backgrounds) {
+        $shorthand: nth($backgrounds, $i); // Get member for current index
+        $type: type-of($shorthand); // Get type of variable - List (gradient) or String (image)
+
+        // If shorthand is a list (gradient)
+        @if $type == list {
+            $first-member: nth($shorthand, 1); // Get first member of shorthand
+
+            // Linear Gradient
+            @if index(linear radial, nth($first-member, 1)) {
+                $gradient-type: nth($first-member, 1); // linear || radial
+                $gradient-args: false;
+                $gradient-positions: false;
+                $shorthand-start: false;
+                @if type-of($first-member) == list {
+                    // Linear gradient plus additional shorthand values - lg(red,orange)repeat,...
+                    $gradient-positions: nth($first-member, 2);
+                    $gradient-args: nth($first-member, 3);
+                    $shorthand-start: 2;
+                } @else {
+                    // Linear gradient only - lg(red,orange),...
+                    $gradient-positions: nth($shorthand, 2);
+                    $gradient-args: nth($shorthand, 3); // Get gradient (red, blue)
+                }
+
+                $gradient-positions: _gradient-positions-parser($gradient-type, $gradient-positions);
+                $gradient: _render-gradients($gradient-positions, $gradient-args, $gradient-type, $vendor);
+
+                // Append any additional shorthand args to gradient
+                @if $shorthand-start {
+                    @for $j from $shorthand-start through length($shorthand) {
+                        $gradient: join($gradient, nth($shorthand, $j), space);
+                    }
+                }
+                $backgrounds-prefixed: append($backgrounds-prefixed, $gradient, comma);
+            }
+                // Image with additional properties
+            @else {
+                $backgrounds-prefixed: append($backgrounds-prefixed, $shorthand, comma);
+            }
+        }
+            // If shorthand is a simple string (color or image)
+        @else if $type == string {
+            $backgrounds-prefixed: join($backgrounds-prefixed, $shorthand, comma);
+        }
+    }
+    @return $backgrounds-prefixed;
+}
+
+@function _background-img-add-prefix($images, $vendor: false) {
+    $images-prefixed: ();
+    $gradient-positions: false;
+    @for $i from 1 through length($images) {
+        $type: type-of(nth($images, $i)); // Get type of variable - List or String
+
+        // If variable is a list - Gradient
+        @if $type == list {
+            $gradient-type: nth(nth($images, $i), 1); // linear or radial
+            $gradient-pos: null;
+            $gradient-args: null;
+
+            @if ($gradient-type == linear) or ($gradient-type == radial) {
+                $gradient-pos: nth(nth($images, $i), 2); // Get gradient position
+                $gradient-args: nth(nth($images, $i), 3); // Get actual gradient (red, blue)
+            } @else {
+                $gradient-args: nth(nth($images, $i), 2); // Get actual gradient (red, blue)
+            }
+
+            $gradient-positions: _gradient-positions-parser($gradient-type, $gradient-pos);
+            $gradient: _render-gradients($gradient-positions, $gradient-args, $gradient-type, $vendor);
+            $images-prefixed: append($images-prefixed, $gradient, comma);
+        }
+            // If variable is a string - Image
+        @else if $type == string {
+            $images-prefixed: join($images-prefixed, nth($images, $i), comma);
+        }
+    }
+    @return $images-prefixed;
+}
+
+@function _extract-background-color($backgrounds) {
+    $final-bg-layer: nth($backgrounds, length($backgrounds));
+    @if type-of($final-bg-layer) == list {
+        @for $i from 1 through length($final-bg-layer) {
+            $value: nth($final-bg-layer, $i);
+            @if type-of($value) == color {
+                @return $value;
+            }
+        }
+    }
+    @return false;
+}

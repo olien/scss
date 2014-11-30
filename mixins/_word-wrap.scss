@@ -1,0 +1,18 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+// @method: word-wrap
+// @usage: @include word-wrap(break-word);
+// @syntax: normal|break-word|initial|inherit
+
+@mixin word-wrap($wrap: break-word) {
+    word-wrap: $wrap;
+
+    @if $wrap == break-word {
+        overflow-wrap: break-word;
+        word-break: break-all;
+    }
+}

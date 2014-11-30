@@ -1,0 +1,31 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+// @method: transform
+// @usage: @include transform(scale(0));
+// @syntax: none|<transform-function>|initial|inherit
+
+@mixin transform($property: none) {
+    @include prefixer(transform, $property, webkit moz ms o spec);
+}
+
+// @method: transform-origin
+// @usage: @include transform(20% top);
+// @syntax: x-axis-left|center|right|length|%
+//          y-axis-top|center|bottom|length|%
+//          z-axis-                  length
+
+@mixin transform-origin($axes: 50%) {
+    @include prefixer(transform-origin, $axes, webkit moz ms o spec);
+}
+
+// @method: transform-origin
+// @usage: @include transform-style(preserve-3d);
+// @syntac: flat|preserve-3d|initial|inherit
+
+@mixin transform-style($style: flat) {
+    @include prefixer(transform-style, $style, webkit moz ms o spec);
+}

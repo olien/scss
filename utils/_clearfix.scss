@@ -1,0 +1,21 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// @method: clearfix
+// @usage: @include clearfix();
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+// @method: clearfix
+// @usage: @include clearfix();
+
+@mixin cfx {
+    @include clearfix;
+}

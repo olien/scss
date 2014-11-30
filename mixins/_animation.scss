@@ -1,0 +1,77 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from github.com/thoughtbot/bourbon/
+
+// @method: animation
+// @usage: @include animation(animi 5s ease-in-out);
+// @syntax: <name> <duration> <timing-function> <delay> <iteration-count> <direction> <fill-mode> <play-state>
+
+@mixin animation($animations...) {
+    @include prefixer(animation, $animations, webkit moz spec);
+}
+
+// @method: animation-name
+// @usage: @include animation-name(animi);
+// @syntax: <keyframe-name>|none|initial|inherit
+
+@mixin animation-name($names...) {
+    @include prefixer(animation-name, $names, webkit moz spec);
+}
+
+// @method: animation-duration
+// @usage: @include animation-duration(200ms);
+// @syntax: time|initial|inherit
+
+@mixin animation-duration($times...) {
+    @include prefixer(animation-duration, $times, webkit moz spec);
+}
+
+// @method: animation
+// @usage: @include animation-timing-function(ease);
+// @syntax: linear|ease|ease-in|ease-out|cubic-bezier(n,n,n,n)|initial|inherit
+
+@mixin animation-timing-function($motions...) {
+    @include prefixer(animation-timing-function, $motions, webkit moz spec);
+}
+
+// @method: animation-iteration-count
+// @usage: @include animation-iteration-count(3);
+// @syntax: number|infinite|initial|inherit
+
+@mixin animation-iteration-count($values...) {
+    @include prefixer(animation-iteration-count, $values, webkit moz spec);
+}
+
+// @method: animation-direction
+// @usage: @include animation-direction(alternate);
+// @syntax: normal|reverse|alternate|alternate-reverse|initial|inherit
+
+@mixin animation-direction($directions...) {
+    @include prefixer(animation-direction, $directions, webkit moz spec);
+}
+
+// @method: animation-play-state
+// @usage: @include animation-play-state(paused);
+// @syntax: paused|running|initial|inherit
+
+@mixin animation-play-state($states...) {
+    @include prefixer(animation-play-state, $states, webkit moz spec);
+}
+
+// @method: animation
+// @usage: @include animation-delay(2s);
+// @syntax: time|initial|inherit
+
+@mixin animation-delay($times...) {
+    @include prefixer(animation-delay, $times, webkit moz spec);
+}
+
+// @method: animation
+// @usage: @include animation-fill-mode(both);
+// @syntax: none|forwards|backwards|both|initial|inherit
+
+@mixin animation-fill-mode($modes...) {
+    @include prefixer(animation-fill-mode, $modes, webkit moz spec);
+}

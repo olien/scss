@@ -1,0 +1,32 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// @method: keyframes
+// @usage: @include keyframes(fadeIn2) {
+//              from {
+//                  @include transform(scale(0));
+//              }
+//              to {
+//                  @include transform(scale(1));
+//              }
+//          }
+
+@mixin keyframes($name, $webkit: true, $moz: true) {
+    @if $webkit == true {
+        @-webkit-keyframes #{$name}
+        {
+            @content;
+        }
+    }
+    @if $moz == true {
+        @-moz-keyframes #{$name}
+        {
+            @content;
+        }
+    }
+    @keyframes #{$name}
+    {
+        @content;
+    }
+}
