@@ -1,0 +1,64 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// @method: center
+// @usage: @include center;
+
+@mixin center() {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// @method: center-list
+// @usage: @include center-list;
+
+@mixin center-list() {
+    float: right;
+    text-align: left;
+    position: relative;
+    left: -50%;
+
+    ul {
+        position: relative;
+        left: 50%;
+
+        li {
+            float: left;
+        }
+    }
+}
+
+// @method: seo-helper
+// @usage: @include seo-helper;
+
+@mixin seo-helper() {
+    img:not([alt]),
+    img[alt=""],
+    img[alt^=" "],
+    a[href=""],
+    a[href^=" "],
+    a[rel*="nofollow"] {
+        outline: 2px solid red !important;
+        outline-offset: 3px !important;
+    }
+    head,
+    title:empty,
+    link,
+    meta {
+        display: block;
+    }
+    title:empty:before {
+        content: "You've left the <title> empty!"
+    }
+    link:before {
+        content: "You don't have a <title>!"
+    }
+    title ~ link {
+        display: none;
+    }
+    meta[name="description"][content=""]:before,
+    meta[name="description"][content=" "]:before {
+        content: "You've left description empty!";
+    }
+}

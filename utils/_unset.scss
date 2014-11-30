@@ -1,0 +1,75 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// @method: .unset-distances
+// @usage: @include unset-distances;
+
+@mixin unset-distances() {
+    margin: 0;
+    padding: 0;
+}
+
+// @method: .unset-list
+// @usage: @include unset-list;
+
+@mixin unset-list() {
+    @include unset-distances;
+    list-style: none;
+
+    li {
+        @include unset-distances;
+    }
+}
+
+// @method: .unset-outline
+// @usage: @include unset-outline;
+
+@mixin unset-outline() {
+    outline: 0 none !important;
+
+    &:hover,
+    &:focus,
+    &:visited,
+    &:active {
+        outline: 0 none !important;
+    }
+    &::-moz-focus-inner {
+        border: 0 solid transparent;
+    }
+}
+
+// @method: .unset-grid-column
+// @usage: @include unset-grid-column;
+
+@mixin unset-grid-column() {
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+    float: inherit;
+    display: block;
+}
+
+// @method: .unset-grid-offset
+// @usage: @include unset-grid-offset;
+
+@mixin unset-grid-offset() {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+// @method: .unset-grid-row
+// @usage: @include unset-grid-row;
+
+@mixin unset-grid-row() {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+// @method: .unset-grid-wrapper
+// @usage: @include unset-grid-wrapper;
+
+@mixin unset-grid-wrapper() {
+    width: auto;
+}
