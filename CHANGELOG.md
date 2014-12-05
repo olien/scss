@@ -1,4 +1,8 @@
-## Basecondition Library Changelog
+## Basecondition scss Changelog
+
+### 4.0.4
+
+* new name basecondition scss
 
 ### 4.0.3
 
