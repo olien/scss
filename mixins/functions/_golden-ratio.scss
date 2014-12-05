@@ -1,9 +1,0 @@
-// basecondition ~ scssLibrary ~ v4.0.x
-// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
-// licensed under MIT or GPLv3 ~ git.io/OJYZgw
-
-// forked from github.com/thoughtbot/bourbon/
-
-@function golden-ratio($value, $increment) {
-    @return modular-scale($value, $increment, $golden)
-}

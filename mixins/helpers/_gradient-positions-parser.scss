@@ -2,16 +2,14 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
+
+// @function: gradient-positions-parser
 
 @function _gradient-positions-parser($gradient-type, $gradient-positions) {
-    @if $gradient-positions
-  and ($gradient-type == linear)
-  and (type-of($gradient-positions) != color) {
+    @if $gradient-positions and ($gradient-type == linear) and (type-of($gradient-positions) != color) {
         $gradient-positions: _linear-positions-parser($gradient-positions);
-    } @else if $gradient-positions
-  and ($gradient-type == radial)
-  and (type-of($gradient-positions) != color) {
+    } @else if $gradient-positions and ($gradient-type == radial) and (type-of($gradient-positions) != color) {
         $gradient-positions: _radial-positions-parser($gradient-positions);
     }
     @return $gradient-positions;

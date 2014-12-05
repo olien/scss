@@ -2,7 +2,9 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
+
+// @function: radial-arg-parser
 
 @function _radial-arg-parser($G1, $G2, $pos, $shape-size) {
     @each $value in $G1, $G2 {
@@ -34,11 +36,11 @@
         @else {
             @if ($pos-type != color) or ($first-val != "transparent") {
                 @if ($pos-type == number)
-        or ($first-val == "center")
-        or ($first-val == "top")
-        or ($first-val == "right")
-        or ($first-val == "bottom")
-        or ($first-val == "left") {
+                    or ($first-val == "center")
+                    or ($first-val == "top")
+                    or ($first-val == "right")
+                    or ($first-val == "bottom")
+                    or ($first-val == "left") {
 
                     $pos: $value;
 
@@ -46,13 +48,13 @@
                         $G1: null;
                     }
                 } @else if ($first-val == "ellipse")
-        or ($first-val == "circle")
-        or ($first-val == "closest-side")
-        or ($first-val == "closest-corner")
-        or ($first-val == "farthest-side")
-        or ($first-val == "farthest-corner")
-        or ($first-val == "contain")
-        or ($first-val == "cover") {
+                        or ($first-val == "circle")
+                        or ($first-val == "closest-side")
+                        or ($first-val == "closest-corner")
+                        or ($first-val == "farthest-side")
+                        or ($first-val == "farthest-corner")
+                        or ($first-val == "contain")
+                        or ($first-val == "cover") {
 
                     $shape-size: $value;
 

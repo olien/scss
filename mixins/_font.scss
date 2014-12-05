@@ -2,32 +2,27 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
 
 // @method: font-face
-// @usage: @include
+// @usage: @include font-face(SourceSansPro, '/fonts/Source_Sans_Pro/SourceSansPro-Italic', normal, italic);
+//         @include font-face(SourceSansPro, '/fonts/Source_Sans_Pro/SourceSansPro-Regular');
+//         @include font-face(SourceSansPro, '/fonts/Source_Sans_Pro/SourceSansPro-Bold', bold);
+//         @include font-face(SourceSansPro, '/fonts/Source_Sans_Pro/SourceSansPro-Italic', normal, italic);
 // Order of the includes matters, and it is: normal, bold, italic, bold+italic.
 
-@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false ) {
-  @font-face {
-    font-family: $font-family;
-    font-weight: $weight;
-    font-style: $style;
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $file-formats: eot woff ttf svg) {
+    @font-face {
+        font-family: $font-family;
+        font-weight: $weight;
+        font-style: $style;
 
-    @if $asset-pipeline == true {
-      src: font-url('#{$file-path}.eot');
-      src: font-url('#{$file-path}.eot?#iefix')          format('embedded-opentype'),
-           font-url('#{$file-path}.woff')                format('woff'),
-           font-url('#{$file-path}.ttf')                 format('truetype'),
-           font-url('#{$file-path}.svg##{$font-family}') format('svg');
-    } @else {
-      src: url('#{$file-path}.eot');
-      src: url('#{$file-path}.eot?#iefix')               format('embedded-opentype'),
-           url('#{$file-path}.woff')                     format('woff'),
-           url('#{$file-path}.ttf')                      format('truetype'),
-           url('#{$file-path}.svg##{$font-family}')      format('svg');
+        @if contains($file-formats, eot) {
+            src: "('#{$file-path}.eot') format('embedded-opentype')";
+        }
+
+        src: font-source-declaration($font-family, $file-path, $file-formats);
     }
-  }
 }
 
 // Font feature settings mixin and property default.
@@ -38,16 +33,17 @@
 //         @include font-feature-settings("ss01", "ss02");
 
 @mixin font-feature-settings($settings...) {
-    @if length($settings) == 0 { $settings: none; }
+    @if length($settings) == 0 {
+        $settings: none;
+    }
     @include prefixer(font-feature-settings, $settings, webkit moz ms spec);
 }
 
 // @method: font-size
-// @usage: @import font-size(12px);
+// @usage: @include font-size(12px);
 // @syntax: em|px|%
 
-@mixin font-size($size)
-{
+@mixin font-size($size) {
     @if (unit($size) == px) {
         font-size: $size;
         font-size: rem($size);
@@ -60,11 +56,10 @@
 }
 
 // @method: line-height
-// @usage: @import line-height(12px);
+// @usage: @include line-height(12px);
 // @syntax: em|px|%
 
-@mixin line-height($size)
-{
+@mixin line-height($size) {
     @if (unit($size) == px) {
         line-height: $size;
         line-height: rem($size);
@@ -76,4 +71,29 @@
     }
 }
 
+// @method: shorthand
+// @usage: @include shorthand(12px, 120%, normal);
 
+@mixin shorthand($size: 14px, $line-height: false, $weight: flase) {
+    @include font-size($size);
+    @if $line-height {
+        @include line-height($line-height);
+    }
+    @if $weight {
+        font-weight: $weight;
+    }
+}
+
+// @method: .smoothing
+// @usage: @include smoothing(subpixel-antialiased);
+// @syntax: off|antialiased|subpixel-antialiased
+
+@mixin smoothing($smooth) {
+    @if ($smooth == 'subpixel-antialiased') {
+        -webkit-font-smoothing: $smooth;
+        -moz-osx-font-smoothing: auto;
+    } @else {
+        -webkit-font-smoothing: $smooth;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}

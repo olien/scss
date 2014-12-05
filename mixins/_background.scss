@@ -2,12 +2,10 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
 
-//************************************************************************//
 // Background property for adding multiple backgrounds using shorthand
 // notation.
-//************************************************************************//
 
 // @method: background
 // @usage: @include background(linear-gradient(top, orange, red));
@@ -15,35 +13,47 @@
 //         @include background(url("/images/a.png") no-repeat, linear-gradient(orange, red));
 //         @include background(url("image.png") center center, linear-gradient(orange, red), url("image.png"));
 
-@mixin background($background-1, $background-2: null,
-  $background-3: null, $background-4: null,
-  $background-5: null, $background-6: null,
-  $background-7: null, $background-8: null,
-  $background-9: null, $background-10: null,
-  $fallback: null) {
-    $backgrounds: $background-1, $background-2,
-    $background-3, $background-4,
-    $background-5, $background-6,
-    $background-7, $background-8,
-    $background-9, $background-10;
+@mixin background($backgrounds...) {
+    $webkit-backgrounds: ();
+    $spec-backgrounds: ();
 
-    @if (type_of($background-1) == color and type_of($background-2) == number) {
-        @include translucent-background-color($background-1, $background-2);
-    } @else {
-        $fallback-color: false;
-        @if (type-of($fallback) == color) or ($fallback == "transparent") {
-            $fallback-color: $fallback;
+    @each $background in $backgrounds {
+        $webkit-background: ();
+        $spec-background: ();
+        $background-type: type-of($background);
+
+        @if $background-type == string or $background-type == list {
+            $background-str: if($background-type == list, nth($background, 1), $background);
+
+            $url-str: str-slice($background-str, 0, 3);
+            $gradient-type: str-slice($background-str, 0, 6);
+
+            @if $url-str == "url" {
+                $webkit-background: $background;
+                $spec-background: $background;
+            } @else if $gradient-type == "linear" {
+                $gradients: _linear-gradient-parser("#{$background}");
+                $webkit-background: map-get($gradients, webkit-image);
+                $spec-background: map-get($gradients, spec-image);
+            } @else if $gradient-type == "radial" {
+                $gradients: _radial-gradient-parser("#{$background}");
+                $webkit-background: map-get($gradients, webkit-image);
+                $spec-background: map-get($gradients, spec-image);
+            } @else {
+                $webkit-background: $background;
+                $spec-background: $background;
+            }
         } @else {
-            $fallback-color: _extract-background-color($backgrounds);
+            $webkit-background: $background;
+            $spec-background: $background;
         }
 
-        @if $fallback-color {
-            background-color: $fallback-color;
-        }
-
-        background: _background-add-prefix($backgrounds, webkit);
-        background: _background-add-prefix($backgrounds);
+        $webkit-backgrounds: append($webkit-backgrounds, $webkit-background, comma);
+        $spec-backgrounds: append($spec-backgrounds, $spec-background, comma);
     }
+
+    background: $webkit-backgrounds;
+    background: $spec-backgrounds;
 }
 
 // @method: background-image
@@ -54,24 +64,79 @@
 //         @include background-image(linear-gradient(hsla(0, 100%, 100%, 0.25) 0%, hsla(0, 100%, 100%, 0.08) 50%, transparent 50%), linear-gradient(orange, red));
 
 @mixin background-image($images...) {
-    background-image: _background-img-add-prefix($images, webkit);
-    background-image: _background-img-add-prefix($images);
+    $webkit-images: ();
+    $spec-images: ();
+
+    @each $image in $images {
+        $webkit-image: ();
+        $spec-image: ();
+
+        @if (type-of($image) == string) {
+            $url-str: str-slice($image, 0, 3);
+            $gradient-type: str-slice($image, 0, 6);
+
+            @if $url-str == "url" {
+                $webkit-image: $image;
+                $spec-image: $image;
+            } @else if $gradient-type == "linear" {
+                $gradients: _linear-gradient-parser($image);
+                $webkit-image: map-get($gradients, webkit-image);
+                $spec-image: map-get($gradients, spec-image);
+            } @else if $gradient-type == "radial" {
+                $gradients: _radial-gradient-parser($image);
+                $webkit-image: map-get($gradients, webkit-image);
+                $spec-image: map-get($gradients, spec-image);
+            }
+        }
+
+        $webkit-images: append($webkit-images, $webkit-image, comma);
+        $spec-images: append($spec-images, $spec-image, comma);
+    }
+
+    background-image: $webkit-images;
+    background-image: $spec-images;
 }
 
-//  @method: background-clip
+// @method: background-clip
+// @usage: @include background-clip(border-box);
+// @syntax: border-box|padding-box|content-box
 
 @mixin background-clip($clip) {
     // webkit and mozilla use the deprecated short [border | padding]
     $clip: unquote($clip);
     $deprecated: $clip;
-    @if $clip == padding-box { $deprecated: padding; }
-    @if $clip == border-box { $deprecated: border; }
+    @if $clip == padding-box {
+        $deprecated: padding;
+    }
+    @if $clip == border-box {
+        $deprecated: border;
+    }
     // Support for webkit and mozilla's use of the deprecated short form
     @include prefixer(background-clip, $deprecated, webkit moz);
     @include prefixer(background-clip, $deprecated, khtml spec);
 }
 
+// @method: background-origin
+// @usage: @include background-origin(padding-box);
+// @syntax: padding-box|border-box|content-box
 
-//  @method: background-origin
-//  @method: background-size
-//  @method: background-attachment
+@mixin background-origin($origin...) {
+    @include prefixer(background-origin, $origin, webkit moz o spec);
+}
+
+// @method: background-size
+// @usage: @include background-size(100px, 100px);
+//         @include background-size(contain);
+// @syntax: length|percentage|cover|contain
+
+@mixin background-size($size...) {
+    @include prefixer(background-size, $size, webkit moz o spec);
+}
+
+// @method: background-attachment
+// @usage: @include background-attachment(fixed);
+// @syntax: scroll|fixed|local
+
+@mixin background-attachment($attachment...) {
+    @include prefixer(background-attachment, $attachment, spec);
+}

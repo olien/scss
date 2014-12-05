@@ -2,52 +2,85 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
+
+// @method: columns
+// @usage: @include columns();
+// @syntax: <column-count>|<column-width>
 
 @mixin columns($arg: auto) {
-    // <column-count> || <column-width>
     @include prefixer(columns, $arg, webkit moz spec);
 }
 
+// @method: column-count
+// @usage: @include column-count();
+// @syntax: auto|integer
+
 @mixin column-count($int: auto) {
-    // auto || integer
     @include prefixer(column-count, $int, webkit moz spec);
 }
 
+// @method: column-gap
+// @usage: @include column-gap(normal);
+// @syntax: normal|length
+
 @mixin column-gap($length: normal) {
-    // normal || length
     @include prefixer(column-gap, $length, webkit moz spec);
 }
+
+// @method: column-fill
+// @usage: @include column-fill(auto);
+// @syntax: auto|length
 
 @mixin column-fill($arg: auto) {
     // auto || length
     @include prefixer(column-fill, $arg, webkit moz spec);
 }
 
+// @method: column-rule
+// @usage: @include column-rule();
+// @syntax: <border-width>|<border-style>|<color>
+
 @mixin column-rule($arg) {
-    // <border-width> || <border-style> || <color>
     @include prefixer(column-rule, $arg, webkit moz spec);
 }
+
+// @method: column-rule-color
+// @usage: @include column-rule-color();
 
 @mixin column-rule-color($color) {
     @include prefixer(column-rule-color, $color, webkit moz spec);
 }
+
+// @method: column-rule-style
+// @usage: @include column-rule-style(solid);
+// @syntax: none|hidden|dashed|dotted|double|groove|inset|inset|outset|ridge|solid
 
 @mixin column-rule-style($style: none) {
     // none | hidden | dashed | dotted | double | groove | inset | inset | outset | ridge | solid
     @include prefixer(column-rule-style, $style, webkit moz spec);
 }
 
+// @method: column-rule-width
+// @usage: @include column-rule-width(none);
+// @syntax: none|<number>
+
 @mixin column-rule-width($width: none) {
     @include prefixer(column-rule-width, $width, webkit moz spec);
 }
 
+// @method: column-span
+// @usage: @include column-span(none);
+// @syntax: none|all
+
 @mixin column-span($arg: none) {
-    // none || all
     @include prefixer(column-span, $arg, webkit moz spec);
 }
 
+// @method: column-width
+// @usage: @include column-width(auto);
+// @syntax: auto|length
+
 @mixin column-width($length: auto) {
-    // auto || length
     @include prefixer(column-width, $length, webkit moz spec);
 }

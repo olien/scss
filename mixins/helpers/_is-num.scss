@@ -1,0 +1,14 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from git.io/1dMSeg
+
+// @function: is-num
+// Helper for linear-gradient-parser
+
+@function _is-num($char) {
+    $values: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' 0 1 2 3 4 5 6 7 8 9;
+    $index: index($values, $char);
+    @return if($index, true, false);
+}

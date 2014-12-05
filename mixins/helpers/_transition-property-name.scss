@@ -2,11 +2,12 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
 
+// @function: transition-property-names
 // Return vendor-prefixed property names if appropriate
 // Example: transition-property-names((transform, color, background), moz) -> -moz-transform, color, background
-//************************************************************************//
+
 @function transition-property-names($props, $vendor: false) {
     $new-props: ();
 
@@ -16,6 +17,8 @@
 
     @return $new-props;
 }
+
+// @function: transition-property-name
 
 @function transition-property-name($prop, $vendor: false) {
     // put other properties that need to be prefixed here aswell

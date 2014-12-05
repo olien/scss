@@ -2,14 +2,20 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
+
+// @method: linear-gradient
+// @usage: @include linear-gradient(#1e5799, #2989d8);
+//         @include linear-gradient(to top, #8fdce5, #3dc3d1);
+//         @include linear-gradient(to top, #8fdce5, #3dc3d1, $fallback: red);
+//         @include linear-gradient(50deg, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
 
 @mixin linear-gradient($pos, $G1, $G2: null,
-$G3: null, $G4: null,
-$G5: null, $G6: null,
-$G7: null, $G8: null,
-$G9: null, $G10: null,
-$fallback: null) {
+    $G3: null, $G4: null,
+    $G5: null, $G6: null,
+    $G7: null, $G8: null,
+    $G9: null, $G10: null,
+    $fallback: null) {
     // Detect what type of value exists in $pos
     $pos-type: type-of(nth($pos, 1));
     $pos-spec: null;
@@ -51,19 +57,24 @@ $fallback: null) {
     background-image: unquote("linear-gradient(#{$pos-spec}#{$full})");
 }
 
+// @method: radial-gradient
+// @usage: @include radial-gradient(#1e5799, #3dc3d1);
+//         @include radial-gradient(#1e5799, #3dc3d1, $fallback: red);
+//         @include radial-gradient(circle at 50% 50%, #eee 10%, #1e5799 30%, #efefef);
 // Requires Sass 3.1+
-@mixin radial-gradient($G1,        $G2,
-$G3: null, $G4: null,
-$G5: null, $G6: null,
-$G7: null, $G8: null,
-$G9: null, $G10: null,
-$pos: null,
-$shape-size: null,
-$fallback: null) {
+
+@mixin radial-gradient($G1, $G2,
+    $G3: null, $G4: null,
+    $G5: null, $G6: null,
+    $G7: null, $G8: null,
+    $G9: null, $G10: null,
+    $pos: null,
+    $shape-size: null,
+    $fallback: null) {
 
     $data: _radial-arg-parser($G1, $G2, $pos, $shape-size);
-    $G1:  nth($data, 1);
-    $G2:  nth($data, 2);
+    $G1: nth($data, 1);
+    $G2: nth($data, 2);
     $pos: nth($data, 3);
     $shape-size: nth($data, 4);
 
@@ -82,11 +93,11 @@ $fallback: null) {
 
     // Add Commas and spaces
     $shape-size: if($shape-size, '#{$shape-size}, ', null);
-    $pos:        if($pos, '#{$pos}, ', null);
-    $pos-spec:   if($pos, 'at #{$pos}', null);
+    $pos: if($pos, '#{$pos}, ', null);
+    $pos-spec: if($pos, 'at #{$pos}', null);
     $shape-size-spec: if(($shape-size-spec != ' ') and ($pos == null), '#{$shape-size-spec}, ', '#{$shape-size-spec} ');
 
-    background-color:  $fallback-color;
+    background-color: $fallback-color;
     background-image: -webkit-radial-gradient(unquote(#{$pos}#{$shape-size}#{$full}));
     background-image: unquote("radial-gradient(#{$shape-size-spec}#{$pos-spec}#{$full})");
 }

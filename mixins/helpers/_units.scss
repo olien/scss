@@ -2,7 +2,9 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
+
+// @function: px
 
 @function px($emval, $base: $em-base) {
     @if not unitless($emval) {
@@ -14,6 +16,7 @@
     @return ($emval * $base) * 1px;
 }
 
+// @function: em
 // Convert pixels to ems
 // eg. for a relational value of 12px write em(12) when the parent is 16px
 // if the parent is another value say 24px write em(12, 24)
@@ -28,6 +31,7 @@
     @return ($pxval / $base) * 1em;
 }
 
+// @function: rem
 // Convert pixels to rems
 // eg. for a relational value of 12px write rem(12)
 // Assumes $em-base is the font-size of <html>
@@ -44,6 +48,7 @@
     @return ($pxval / $base) * 1rem;
 }
 
+// @function: strip-units
 // Srtips the units from a value. e.g. 12px -> 12
 
 @function strip-units($val) {

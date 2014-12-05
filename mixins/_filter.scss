@@ -2,10 +2,13 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
+
+// @method: filter
+// @usage: @include filter(grayscale(50%));
+// @syntax: <filter-function> [<filter-function]*|none
 
 @mixin filter($function: none) {
-  // <filter-function> [<filter-function]* | none
-  @include prefixer(filter, $function, webkit spec);
+    @include prefixer(filter, $function, webkit spec);
 }
 

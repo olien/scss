@@ -2,24 +2,25 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// functions
-@import 'functions/background-app-prefix',
-'functions/border-app-prefix',
-'functions/color-lightness',
-'functions/golden-ratio',
-'functions/linear-gradient',
-'functions/modular-scale',
-'functions/transition-property-name',
-'functions/units';
-
 // helper
-@import 'helper/gradient-positions-parser',
-'helper/linear-positions-parser',
-'helper/prefixer',
-'helper/radial-arg-parser',
-'helper/radial-positions-parser',
-'helper/render-gradients',
-'helper/shape-size-stripper';
+@import 'helpers/color-lightness',
+'helpers/contains',
+'helpers/font-source-declaration',
+'helpers/gradient-positions-parser',
+'helpers/is-num',
+'helpers/linear-angle-parser',
+'helpers/linear-gradient-parser',
+'helpers/linear-positions-parser',
+'helpers/linear-side-corner-parser',
+'helpers/modular-scale',
+'helpers/radial-arg-parser',
+'helpers/radial-gradient-parser',
+'helpers/radial-positions-parser',
+'helpers/render-gradients',
+'helpers/shape-size-stripper',
+'helpers/str-to-num',
+'helpers/transition-property-name',
+'helpers/units';
 
 // mixins
 @import 'animation',
@@ -33,11 +34,13 @@
 'filter',
 'font',
 'gradient',
+'grid',
 'hyphens',
 'image-rendering',
 'keyframes',
 'perspective',
 'placeholder',
+'prefixer',
 'transform',
 'transition',
 'translucent',
