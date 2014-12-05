@@ -1,0 +1,67 @@
+// basecondition ~ scssLibrary ~ v4.0.x
+// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// @method: wrapper
+// @usage: @include wrapper(1200px);
+
+@mixin wrapper($width) {
+    @if (unit($width)) {
+        max-width: $width;
+    }
+}
+
+// @method: row
+// @usage: @include row(20px);
+
+@mixin row($gutter-width) {
+    @if (unit($gutter-width) == px) {
+        @include cfx;
+        margin-left: strip-units($gutter-width) * -1px;
+        margin-right: strip-units($gutter-width) * -1px;
+    }
+}
+
+// @method: column
+// @usage: @include column(1, 12, 20px);
+
+@mixin column($index, $number-of-columns, $gutter-width) {
+    @if (unitless($index) & & unitless($number-of-columns)) {
+        @include box-sizing(border-box);
+        float: left;
+        width: percentage((strip-units($index) / strip-units($number-of-columns)));
+
+        @if (unit($gutter-width) == px) {
+            padding-left: strip-units($gutter-width) * 1px;
+            padding-right: strip-units($gutter-width) * 1px;
+        }
+    }
+}
+
+// @method: offset
+// @usage: @include column(1, 12, left);
+
+@mixin offset($index, $number-of-columns, $direction) {
+    @if (unitless($index) & & unitless($number-of-columns)) {
+        @if ($direction == 'left') {
+            margin-left: percentage((strip-units($index) / strip-units($number-of-columns)));
+        }
+        @if ($direction == 'right') {
+            margin-right: percentage((strip-units($index) / strip-units($number-of-columns)));
+        }
+    }
+}
+
+// @method: offset-left
+// @usage: @include column(1, 12);
+
+@mixin offset-left($index, $number-of-columns) {
+    @include offset($index, $number-of-columns, left);
+}
+
+// @method: offset-right
+// @usage: @include column(1, 12);
+
+@mixin offset-right($index, $number-of-columns) {
+    @include offset($index, $number-of-columns, right);
+}

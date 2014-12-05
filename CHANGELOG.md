@@ -1,5 +1,12 @@
 ## Basecondition scssLibrary Changelog
 
+### 4.0.2
+
+* use scss 3.4.9 syntax
+* change file structure
+* add basecondition grid
+* add @method, @usage, @syntax info as comments
+
 ### 4.0.1
 
 * add change log

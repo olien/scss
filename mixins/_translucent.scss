@@ -3,7 +3,7 @@
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
 // @method: translucent-background-color
-// @usage: @import translucent-background-color(#f57e20, 0.5);
+// @usage: @include translucent-background-color(#f57e20, 0.5);
 
 @mixin translucent-background-color($color, $alpha) {
     $rgba: rgba($color, $alpha);
@@ -15,7 +15,7 @@
 }
 
 // @method: translucent-border-color
-// @usage: @import translucent-border-color(#f57e20, 0.5);
+// @usage: @include translucent-border-color(#f57e20, 0.5);
 
 @mixin translucent-border-color($color, $alpha) {
     border-color: rgba($color, $alpha);
@@ -23,14 +23,14 @@
 }
 
 // @method: translucent-color
-// @usage: @import translucent-color(#f57e20, 0.5);
+// @usage: @include translucent-color(#f57e20, 0.5);
 
 @mixin translucent-color($color, $alpha) {
     color: rgba($color, $alpha);
 }
 
 // @method: opacity
-// @usage: @import opacity(0.55);
+// @usage: @include opacity(0.55);
 
 @mixin opacity($alpha) {
     @include prefixer(opacity, $alpha, webkit khtml moz spec);

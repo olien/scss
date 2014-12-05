@@ -2,9 +2,12 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
+
+// @method: hyphens
+// @usage: @include hyphens(auto);
+// @syntax: none|manual|auto
 
 @mixin hyphens($hyphenation: none) {
-// none | manual | auto
-  @include prefixer(hyphens, $hyphenation, webkit moz ms spec);
+    @include prefixer(hyphens, $hyphenation, webkit moz ms spec);
 }

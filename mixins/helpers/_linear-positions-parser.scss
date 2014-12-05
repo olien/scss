@@ -2,7 +2,9 @@
 // copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
-// forked from github.com/thoughtbot/bourbon/
+// forked from git.io/1dMSeg
+
+// @function: linear-positions-parsery
 
 @function _linear-positions-parser($pos) {
     $type: type-of(nth($pos, 1));
@@ -55,6 +57,8 @@
     $spec: unquote($spec + ",");
     @return $degree $spec;
 }
+
+// @function position-flipper
 
 @function _position-flipper($pos) {
     @return if($pos == left, right, null) if($pos == right, left, null) if($pos == top, bottom, null) if($pos == bottom, top, null);
