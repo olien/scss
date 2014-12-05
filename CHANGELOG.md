@@ -2,7 +2,7 @@
 
 ### 4.0.3
 
-* rename project 
+* component add
 
 ### 4.0.2
 
