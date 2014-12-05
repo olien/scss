@@ -1,6 +1,6 @@
 {
     "name": "basecondition/scsslibrary",
-    "type": "library",
+    "type": "component",
     "description": "Basecondition scssLibrary",
     "keywords": [],
     "homepage": "http://basecondition.com",
@@ -10,5 +10,13 @@
             "name": "Joachim Doerr",
             "email": "hello@basecondition.com"
         }
-    ]
+    ],
+    "extra": {
+        "component": {
+            "files": [
+                "mixins/helpers/_color-lightness.scss",
+                "mixins/_all.scss"
+            ]
+        }
+    }
 }
