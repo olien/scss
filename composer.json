@@ -1,8 +1,12 @@
 {
-    "name": "basecondition/scsslibrary",
+    "name": "basecondition/library",
     "type": "component",
-    "description": "Basecondition scssLibrary",
-    "keywords": [],
+    "description": "Basecondition Library",
+    "keywords": [
+        "scss",
+        "library",
+        "Basecondition"
+    ],
     "homepage": "http://basecondition.com",
     "license": "MIT",
     "authors": [
