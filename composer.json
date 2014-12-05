@@ -1,7 +1,7 @@
 {
-    "name": "basecondition/scsslibrary",
+    "name": "basecondition/scss",
     "type": "component",
-    "description": "Basecondition scssLibrary",
+    "description": "Basecondition scss",
     "keywords": [
         "scss",
         "library",
