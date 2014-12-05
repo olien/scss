@@ -1,6 +1,6 @@
 {
     "name": "basecondition/scss",
-    "type": "component",
+    "type": "library",
     "description": "Basecondition scss",
     "keywords": [
         "scss",
@@ -14,16 +14,5 @@
             "name": "Joachim Doerr",
             "email": "hello@basecondition.com"
         }
-    ],
-    "extra": {
-        "component": {
-            "files": [
-                "mixins/helpers/*",
-                "mixins/*",
-                "settings/*",
-                "utils/*",
-                "_lib.scss"
-            ]
-        }
-    }
+    ]
 }
