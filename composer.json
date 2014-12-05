@@ -18,11 +18,11 @@
     "extra": {
         "component": {
             "files": [
-                "scss/mixins/helpers/*",
-                "scss/mixins/*",
-                "scss/settings/*",
-                "scss/utils/*",
-                "scss/_lib.scss"
+                "mixins/helpers/*",
+                "mixins/*",
+                "settings/*",
+                "utils/*",
+                "_lib.scss"
             ]
         }
     }
