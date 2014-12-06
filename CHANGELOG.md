@@ -1,5 +1,9 @@
 ## Basecondition scss Changelog
 
+### 4.0.5
+
+* add icon mixin
+
 ### 4.0.4
 
 * new name basecondition scss
