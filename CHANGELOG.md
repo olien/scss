@@ -1,5 +1,9 @@
 ## Basecondition scss Changelog
 
+### 4.1.0
+
+* stable version, tag master branch
+
 ### 4.0.6
 
 * refactor is num function
