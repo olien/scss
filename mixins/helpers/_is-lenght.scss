@@ -1,0 +1,14 @@
+// basecondition ~ scss ~ v4.1.0
+// copyright 2015 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from git.io/1dMSeg
+
+// @function: is-length
+// Check for a valid length
+
+@function is-length($value) {
+    @return type-of($value) != "null" and (str-slice($value + "", 1, 4) == 'calc'
+       or index(auto inherit initial 0, $value)
+       or (type-of($value) == "number" and not(unitless($value))));
+}
