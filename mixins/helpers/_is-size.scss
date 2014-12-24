@@ -1,0 +1,13 @@
+// basecondition ~ scss ~ v4.0.x
+// copyright 2015 ~ Joachim Doerr ~ hello@basecondition.com
+// licensed under MIT or GPLv3 ~ git.io/OJYZgw
+
+// forked from git.io/1dMSeg
+
+// @function: is-size
+// Check for a valid size
+
+@function is-size($value) {
+    @return is-length($value)
+          or contains("fill" "fit-content" "min-content" "max-content", $value);
+}

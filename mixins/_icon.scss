@@ -1,11 +1,11 @@
 // basecondition ~ scss ~ v4.0.x
-// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// copyright 2015 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
 // @method: icon
 // @usage: @include icon();
 
-@mixin icon($icon: false, $font: true, $position: before) {
+@mixin icon($icon: false, $font: false, $position: before, $smoothing: true) {
   @if $position == both {
     $position: 'before, &:after';
   }
@@ -15,10 +15,12 @@
       content: quote($icon);
     }
     @if $font {
+      font-family: $font;
+    }
+    @if $smoothing {
       speak: none;
       font-style: normal;
       font-weight: normal;
-      font-family: $font;
       text-transform: none;
       @include smoothing(antialiased);
     }

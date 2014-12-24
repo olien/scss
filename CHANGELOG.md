@@ -1,5 +1,12 @@
 ## Basecondition scss Changelog
 
+### 4.0.6
+
+* refactor is num function
+* add is size, is lenght
+* refactor font-face
+* refactor contains function
+
 ### 4.0.5
 
 * add icon mixin

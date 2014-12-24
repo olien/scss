@@ -1,5 +1,5 @@
 // basecondition ~ scss ~ v4.0.x
-// copyright 2014 ~ Joachim Doerr ~ hello@basecondition.com
+// copyright 2015 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
 // forked from git.io/1dMSeg
@@ -11,15 +11,11 @@
 //         @include font-face(SourceSansPro, '/fonts/Source_Sans_Pro/SourceSansPro-Italic', normal, italic);
 // Order of the includes matters, and it is: normal, bold, italic, bold+italic.
 
-@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $file-formats: eot woff ttf svg) {
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $file-formats: eot woff2 woff ttf svg) {
     @font-face {
         font-family: $font-family;
         font-weight: $weight;
         font-style: $style;
-
-        @if contains($file-formats, eot) {
-            src: "('#{$file-path}.eot') format('embedded-opentype')";
-        }
 
         src: font-source-declaration($font-family, $file-path, $file-formats);
     }
