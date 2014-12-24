@@ -3,6 +3,7 @@
 ### 4.1.0
 
 * stable version, tag master branch
+* add readme
 
 ### 4.0.6
 
