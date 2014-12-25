@@ -42,7 +42,7 @@ The available install options:
 
 #### 2.3 Use the basecondition/kickstart
 
-* Download the latest [basecondition/kickstart](https://github.com/basecondition/kickstart) release [zip](https://github.com/basecondition/kickstart/archive/v4.1.0.zip) or [tar.gz](https://github.com/basecondition/scss/kickstart/v4.1.0.tar.gz)
+* Download the latest [basecondition/kickstart](https://github.com/basecondition/kickstart) release [zip](https://github.com/basecondition/kickstart/archive/v4.1.0.zip) or [tar.gz](https://github.com/basecondition/kickstart/v4.1.0.tar.gz)
 * Unzip the pack
 
 
