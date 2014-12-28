@@ -3,37 +3,44 @@
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
 // @method: wrapper
-// @usage: @include wrapper(1200px);
+// @usage: @include wrapper(1200px,40px);
 
-@mixin wrapper($width) {
+@mixin wrapper($width: $container-tablet, $gutter-width: $grid-gutter-width) {
+    @if unit($width) {
+        $width: strip-units($width);
+    }
+    @if unit($gutter-width) {
+        $width: $width + strip-units($gutter-width);
+    }
     @if (unit($width)) {
+        @include cfx;
         max-width: $width;
     }
 }
 
 // @method: row
-// @usage: @include row(20px);
+// @usage: @include row(40px);
 
-@mixin row($gutter-width) {
+@mixin row($gutter-width: $grid-gutter-width) {
     @if (unit($gutter-width) == px) {
         @include cfx;
-        margin-left: strip-units($gutter-width) * -1px;
-        margin-right: strip-units($gutter-width) * -1px;
+        margin-left: ceil(strip-units($gutter-width)/2) * -1px;
+        margin-right: ceil(strip-units($gutter-width)/2) * -1px;
     }
 }
 
 // @method: column
-// @usage: @include column(1, 12, 20px);
+// @usage: @include column(1, 12, 40px);
 
-@mixin column($index, $number-of-columns, $gutter-width) {
+@mixin column($index: 1, $number-of-columns: $grid-columns, $gutter-width: $grid-gutter-width) {
     @if (unitless($index) & & unitless($number-of-columns)) {
         @include box-sizing(border-box);
         float: left;
         width: percentage((strip-units($index) / strip-units($number-of-columns)));
 
         @if (unit($gutter-width) == px) {
-            padding-left: strip-units($gutter-width) * 1px;
-            padding-right: strip-units($gutter-width) * 1px;
+            padding-left: ceil(strip-units($gutter-width)/2) * 1px;
+            padding-right: ceil(strip-units($gutter-width)/2) * 1px;
         }
     }
 }
@@ -41,7 +48,7 @@
 // @method: offset
 // @usage: @include column(1, 12, left);
 
-@mixin offset($index, $number-of-columns, $direction) {
+@mixin offset($index: 1, $number-of-columns: $grid-columns, $direction: left) {
     @if (unitless($index) & & unitless($number-of-columns)) {
         @if ($direction == 'left') {
             margin-left: percentage((strip-units($index) / strip-units($number-of-columns)));
@@ -55,13 +62,13 @@
 // @method: offset-left
 // @usage: @include column(1, 12);
 
-@mixin offset-left($index, $number-of-columns) {
+@mixin offset-left($index: 1, $number-of-columns: $grid-columns) {
     @include offset($index, $number-of-columns, left);
 }
 
 // @method: offset-right
 // @usage: @include column(1, 12);
 
-@mixin offset-right($index, $number-of-columns) {
+@mixin offset-right($index: 1, $number-of-columns: $grid-columns) {
     @include offset($index, $number-of-columns, right);
 }

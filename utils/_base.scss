@@ -2,6 +2,15 @@
 // copyright 2015 ~ Joachim Doerr ~ hello@basecondition.com
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
+// @method: html
+// @usage: @include body;
+
+@mixin body() {
+    @include unset-distances;
+    width: 100%;
+    height: 100%;
+}
+
 // @method: center
 // @usage: @include center;
 

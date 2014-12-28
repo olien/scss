@@ -3,15 +3,46 @@
 // licensed under MIT or GPLv3 ~ git.io/OJYZgw
 
 // @method: html
-// @usage:
+// @usage: @include html(#fff,#222,1em,1.4);
 
-@mixin html(){
+@mixin html($background: #fff, $color: #222, $font-size: 1em, $line-height: 1.4) {
+    @include unset-distances;
+    position: relative;
+    width: 100%;
+    height: 100%;
 
+    @if type_of($background) == color {
+        background-color: $background;
+    } @else if $background {
+        @include background($background);
+    }
+    @if type_of($color) == color {
+        color: $color;
+    }
+    @if (unit($font-size) && unit($line-height)) {
+        font-size: $font-size;
+        line-height: $line-height;
+    }
 }
 
-// @method: body
-// @usage:
+// @method: sticky-footer
+// @usage: @include sticky-footer(100px,20px,300px);
 
-@mixin body(){
+@mixin sticky-footer($footer-height: 100px, $main-bottom-padding: 40px, $main-min-height: 450px, $main: #main, $footer: footer) {
+    @if (unit($footer-height) && unit($main-bottom-padding) && unit($main-min-height)) {
+        min-height: 100%;
+        position: relative;
 
+        #{$main} {
+            position: relative;
+            min-height: $main-min-height;
+            padding-bottom: ceil(strip-units($footer-height) + strip-units($main-bottom-padding)) * 1px;
+        }
+        #{$footer} {
+            position: absolute;
+            height: $footer-height;
+            width: 100%;
+            bottom: 0;
+        }
+    }
 }

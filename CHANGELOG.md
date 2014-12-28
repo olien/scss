@@ -3,7 +3,9 @@
 ### 4.1.0
 
 * stable version, tag master branch
+* add base mixins
 * add readme
+* add breakpoints and respond
 
 ### 4.0.6
 
