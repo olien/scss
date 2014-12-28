@@ -6,6 +6,7 @@
 * add base mixins
 * add readme
 * add breakpoints and respond
+* add respond
 
 ### 4.0.6
 
