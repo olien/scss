@@ -16,7 +16,7 @@ $grid-gutter-width:            30px;
 //** Point at which the navbar becomes uncollapsed.
 $grid-float-breakpoint:        $screen-sm-min;
 //** Point at which the navbar begins collapsing.
-$grid-float-breakpoint-max:    (strip-units($grid-float-breakpoint) - 1) * 1px;
+$grid-float-breakpoint-max:    $grid-float-breakpoint - 1px;
 
 //== Container sizes
 //
