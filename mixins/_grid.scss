@@ -5,7 +5,7 @@
 // @method: wrapper
 // @usage: @include wrapper(1200px,40px);
 
-@mixin wrapper($width: $container-tablet, $gutter-width: $grid-gutter-width) {
+@mixin wrapper($width: $container-tablet, $gutter-width: $grid-gutter-width, $center: true) {
     @if unit($width) {
         $width: strip-units($width);
     }
@@ -14,7 +14,11 @@
     }
     @if (unit($width)) {
         @include cfx;
-        max-width: $width;
+        max-width: $width * 1px;
+    }
+    @if $center {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -33,12 +37,12 @@
 // @usage: @include column(1, 12, 40px);
 
 @mixin column($index: 1, $number-of-columns: $grid-columns, $gutter-width: $grid-gutter-width) {
-    @if (unitless($index) & & unitless($number-of-columns)) {
+    @if (unitless($index) && unitless($number-of-columns)) {
         @include box-sizing(border-box);
         float: left;
         width: percentage((strip-units($index) / strip-units($number-of-columns)));
 
-        @if (unit($gutter-width) == px) {
+        @if unit($gutter-width) {
             padding-left: ceil(strip-units($gutter-width)/2) * 1px;
             padding-right: ceil(strip-units($gutter-width)/2) * 1px;
         }
@@ -49,7 +53,7 @@
 // @usage: @include column(1, 12, left);
 
 @mixin offset($index: 1, $number-of-columns: $grid-columns, $direction: left) {
-    @if (unitless($index) & & unitless($number-of-columns)) {
+    @if (unitless($index) && unitless($number-of-columns)) {
         @if ($direction == 'left') {
             margin-left: percentage((strip-units($index) / strip-units($number-of-columns)));
         }
