@@ -33,6 +33,13 @@
     }
 }
 
+// @method: span-column
+// @usage: @include span-column(1, 12, 40px);
+
+@mixin span-column($index: 1, $number-of-columns: $grid-columns, $gutter-width: $grid-gutter-width) {
+    @include column($index, $number-of-columns, $gutter-width);
+}
+
 // @method: column
 // @usage: @include column(1, 12, 40px);
 
