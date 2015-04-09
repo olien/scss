@@ -1,5 +1,5 @@
 // basecondition ~ scss
-// Copyright 2011-2015 ~ basecondition.com
+// copyright 2011-2015 ~ basecondition.com
 // licensed under MIT ~ git.io/OJYZgw
 
 // forked from git.io/1dMSeg
@@ -9,12 +9,12 @@
 // @syntax: none|<length>
 
 @mixin perspective($depth: none) {
-  @include prefixer(perspective, $depth, webkit moz spec);
+    @include prefixer(perspective, $depth, webkit moz spec);
 }
 
 // @method: perspective-origin
 // @usage: @include perspective-origin();
 
 @mixin perspective-origin($value: 50% 50%) {
-  @include prefixer(perspective-origin, $value, webkit moz spec);
+    @include prefixer(perspective-origin, $value, webkit moz spec);
 }

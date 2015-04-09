@@ -1,5 +1,5 @@
 // basecondition ~ scss
-// Copyright 2011-2015 ~ basecondition.com
+// copyright 2011-2015 ~ basecondition.com
 // licensed under MIT ~ git.io/OJYZgw
 
 // forked from git.io/1dMSeg
@@ -7,7 +7,7 @@
 // @method: triangle
 // @usage: @include triangle(12px, gray, down);
 
-@mixin triangle ($size, $color, $direction) {
+@mixin triangle($size, $color, $direction) {
     height: 0;
     width: 0;
 
@@ -18,7 +18,6 @@
     $background-color: if(length($color) == 2, nth($color, 2), transparent);
 
     @if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left) {
-
         $width: $width / 2;
         $height: if(length($size) > 1, $height, $height/2);
 
@@ -26,65 +25,49 @@
             border-left: $width solid $background-color;
             border-right: $width solid $background-color;
             border-bottom: $height solid $foreground-color;
-
         } @else if $direction == right {
             border-top: $width solid $background-color;
             border-bottom: $width solid $background-color;
             border-left: $height solid $foreground-color;
-
         } @else if $direction == down {
             border-left: $width solid $background-color;
             border-right: $width solid $background-color;
             border-top: $height solid $foreground-color;
-
         } @else if $direction == left {
             border-top: $width solid $background-color;
             border-bottom: $width solid $background-color;
             border-right: $height solid $foreground-color;
         }
-    }
-
-    @else if ($direction == up-right) or ($direction == up-left) {
+    } @else if ($direction == up-right) or ($direction == up-left) {
         border-top: $height solid $foreground-color;
 
         @if $direction == up-right {
-            border-left:  $width solid $background-color;
+            border-left: $width solid $background-color;
 
         } @else if $direction == up-left {
             border-right: $width solid $background-color;
         }
-    }
-
-    @else if ($direction == down-right) or ($direction == down-left) {
+    } @else if ($direction == down-right) or ($direction == down-left) {
         border-bottom: $height solid $foreground-color;
 
         @if $direction == down-right {
-            border-left:  $width solid $background-color;
-
+            border-left: $width solid $background-color;
         } @else if $direction == down-left {
             border-right: $width solid $background-color;
         }
-    }
-
-    @else if ($direction == inset-up) {
+    } @else if ($direction == inset-up) {
         border-width: $height $width;
         border-style: solid;
         border-color: $background-color $background-color $foreground-color;
-    }
-
-    @else if ($direction == inset-down) {
+    } @else if ($direction == inset-down) {
         border-width: $height $width;
         border-style: solid;
         border-color: $foreground-color $background-color $background-color;
-    }
-
-    @else if ($direction == inset-right) {
+    } @else if ($direction == inset-right) {
         border-width: $width $height;
         border-style: solid;
         border-color: $background-color $background-color $background-color $foreground-color;
-    }
-
-    @else if ($direction == inset-left) {
+    } @else if ($direction == inset-left) {
         border-width: $width $height;
         border-style: solid;
         border-color: $background-color $foreground-color $background-color $background-color;

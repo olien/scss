@@ -1,5 +1,5 @@
 // basecondition ~ scss
-// Copyright 2011-2015 ~ basecondition.com
+// copyright 2011-2015 ~ basecondition.com
 // licensed under MIT ~ git.io/OJYZgw
 
 // forked from git.io/1dMSeg
@@ -36,10 +36,7 @@
             $webkit: append($webkit, $list1);
             $moz: append($moz, $list2);
             $spec: append($spec, $list3);
-        }
-
-            // Create lists for non-prefixed transition properties
-        @else {
+        } @else { // Create lists for non-prefixed transition properties
             $webkit: append($webkit, $list, comma);
             $moz: append($moz, $list, comma);
             $spec: append($spec, $list, comma);

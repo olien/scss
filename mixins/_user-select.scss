@@ -1,5 +1,5 @@
 // basecondition ~ scss
-// Copyright 2011-2015 ~ basecondition.com
+// copyright 2011-2015 ~ basecondition.com
 // licensed under MIT ~ git.io/OJYZgw
 
 // forked from git.io/1dMSeg
@@ -9,5 +9,5 @@
 // @syntax: none|text|all|element
 
 @mixin user-select($arg: none) {
-  @include prefixer(user-select, $arg, webkit moz ms spec);
+    @include prefixer(user-select, $arg, webkit moz ms spec);
 }
