@@ -31,6 +31,6 @@
 // @method font-awesome
 // @usage: @include font-awesome;
 
-@mixin font-awesome() {
-  @include font-face(FontAwesome, '/assets/vendor/font-awesome/fonts/fontawesome-webfont');
+@mixin font-awesome($assets_path: '/assets') {
+    @include font-face(FontAwesome, '#{$assets_path}/vendor/font-awesome/fonts/fontawesome-webfont', normal, normal, eot woff ttf svg);
 }
