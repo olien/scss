@@ -1,4 +1,4 @@
-## Basecondition ~ scss v4.1.0
+## Basecondition ~ scss v4.2.0
 
 
 ### 1. What is Basecondition?
@@ -22,7 +22,7 @@ The available install options:
 
 #### 2.1 Downlaod the latest unitBase release
 
-* Download the latest [basecondition/scss](https://github.com/basecondition/scss) release [zip](https://github.com/basecondition/scss/archive/v4.1.0.zip) or [tar.gz](https://github.com/basecondition/scss/archive/v4.1.0.tar.gz)
+* Download the latest [basecondition/scss](https://github.com/basecondition/scss) release [zip](https://github.com/basecondition/scss/archive/v4.2.0.zip) or [tar.gz](https://github.com/basecondition/scss/archive/v4.2.0.tar.gz)
 * Unzip the pack
 
 
@@ -32,7 +32,7 @@ The available install options:
 ```
 {
     "require": {
-        "basecondition/scss": "4.1.*"
+        "basecondition/scss": "4.2.*"
     }
 }
 ```
@@ -42,7 +42,7 @@ The available install options:
 
 #### 2.3 Use the basecondition/kickstart
 
-* Download the latest [basecondition/kickstart](https://github.com/basecondition/kickstart) release [zip](https://github.com/basecondition/kickstart/archive/v4.1.0.zip) or [tar.gz](https://github.com/basecondition/kickstart/v4.1.0.tar.gz)
+* Download the latest [basecondition/kickstart](https://github.com/basecondition/kickstart) release [zip](https://github.com/basecondition/kickstart/archive/v4.2.0.zip) or [tar.gz](https://github.com/basecondition/kickstart/v4.2.0.tar.gz)
 * Unzip the pack
 
 

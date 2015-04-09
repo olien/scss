@@ -1,5 +1,12 @@
 ## Basecondition scss Changelog
 
+### 4.2.0
+
+* add span-column
+* use asset_path in icon mixin
+* add elements folder
+* change comment in files head
+
 ### 4.1.0
 
 * stable version, tag master branch
